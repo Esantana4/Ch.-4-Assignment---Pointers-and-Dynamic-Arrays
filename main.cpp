@@ -4,9 +4,9 @@
  CPMR 131 - Professor Q
 
  Description:
- Part 1: This class multiplies, divides, adds, subtracts 2 complex numbers. This class also checks if 2 complex numbers are equal or not.
- Part 2: This class multiplies, divides, adds, subtracts 2 rational numbers. This class also checks if 2 rational numbers are equal or not.
- Part 3: This class multiplies, divides, adds, subtracts 2 polynomials numbers. This class also checks if 2 polynomials numbers are equal or not.
+ Part 1, Complex: This class multiplies, divides, adds, subtracts a complex number with a constant. This class also checks if 2 complex numbers are equal or not.
+ Part 2, Rational: This class multiplies, divides, adds, subtracts a rational number with a constant. This class also normailizes and negates a rational number.
+ Part 3, Polynomials: This class works with polynomials to find derivatives, solve for integral and solve for a polynomial with a constant value.
 
  Credit:
  Complex: Joe Bryant & Erik Santana & Christian Hernandez

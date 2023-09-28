@@ -6,7 +6,6 @@
 //postcondition: going to set the variables to 0.0 since they are doubles (initialize them), allocating new memory
 Polynomial::Polynomial() {}
 
-
 //precondition: going to make a function that gets me the vector data
 //postcondition: going to then resize the number terms, set the termsentered true so it can tell that we enter the inputs
 void Polynomial::enterTerms() {
@@ -49,6 +48,8 @@ Polynomial Polynomial::derivative() {
 //postcondition: going to then returnn the integral, have to push back the coefficient then divide the index + 1
 Polynomial Polynomial::integral() {
     Polynomial integral;
+    //add a constant term with coefficient 0
+    integral.coefficients.push_back(0);
     for (size_t i = 0; i < coefficients.size(); ++i) {
         integral.coefficients.push_back(coefficients[i] / (i + 1));
     }
@@ -199,7 +200,6 @@ void Polynomial::main() {
                 }
                       break;
                 case 0: {
-
                     termsEntered = false;
                     coefficientsSpecified = false;
                     cout << endl;
@@ -213,7 +213,15 @@ void Polynomial::main() {
                 break;
         case 'B': {
             system("cls");
-            cout << "\t\tB> Two Polynomials";
+            int exitOption = inputInteger("Enter -1 to Exit or 0 to continue: ", -1, 0);
+            cout << endl;
+            if (exitOption == -1)
+            {
+                system("cls");
+                goto beginning;
+            }
+           
+            cout << "\t\tB> Two Polynomials\n";
             Polynomial p1, p2, result;
             p1.enterTerms();
             p1.specifyCoefficients();
@@ -252,8 +260,7 @@ void Polynomial::main() {
         }
                 break;
         case '0': {
-            system("cls");
-            mainMenu();
+            system("cls"); mainMenu();
         }
         }
     } while (true);
@@ -261,9 +268,14 @@ void Polynomial::main() {
 //precondition: going to pass in the class
 //postcondition: going to then print the polynomials coefficents information
 void Polynomial::printPolynomial(const Polynomial& poly) {
+    bool first_term_printed = false;
     for (int i = poly.coefficients.size() - 1; i >= 0; --i) {
-        //handle the first term separately to avoid the leading + sign
-        if (i == poly.coefficients.size() - 1) {
+        // Skip terms with a coefficient of 0
+        if (poly.coefficients[i] == 0) continue;
+
+        // Handle the first term separately to avoid the leading + sign
+        if (!first_term_printed) {
+            first_term_printed = true;
             if (poly.coefficients[i] < 0) {
                 cout << "- ";
             }
