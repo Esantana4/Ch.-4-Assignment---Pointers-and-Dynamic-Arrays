@@ -212,49 +212,53 @@ void Polynomial::main() {
         }
                 break;
         case 'B': {
+
             system("cls");
-            int exitOption = inputInteger("Enter -1 to Exit or 0 to continue: ", -1, 0);
-            cout << endl;
-            if (exitOption == -1)
-            {
-                system("cls");
-                goto beginning;
-            }
-           
-            cout << "\t\tB> Two Polynomials\n";
-            Polynomial p1, p2, result;
-            p1.enterTerms();
-            p1.specifyCoefficients();
-            cout << "\n\t\tThe first polynomial (P1) is entered: ";
-            printPolynomial(p1);
 
-            p2.enterTerms();
-            p2.specifyCoefficients();
-            cout << "\n\t\tThe second polynomial (P2) is entered: ";
-            printPolynomial(p2);
+            do {
+                int exitOption = inputInteger("Enter -1 to Exit or 0 to continue: ", -1, 0);
+                cout << endl;
+                if (exitOption == -1)
+                {
+                    system("cls");
+                    goto beginning;
+                }
 
-            result = p1.add(p2);
-            cout << "\n\t\t\tAddition of polynomials       -> P1 + P2 = ";
-            printPolynomial(result);
+                cout << "\t\tB> Two Polynomials\n";
+                Polynomial p1, p2, result;
+                p1.enterTerms();
+                p1.specifyCoefficients();
+                cout << "\n\t\tThe first polynomial (P1) is entered: ";
+                printPolynomial(p1);
 
-            result = p1.subtract(p2);
-            cout << "\t\t\tSubtraction of polynomials    -> P1 - P2 = ";
-            printPolynomial(result);
+                p2.enterTerms();
+                p2.specifyCoefficients();
+                cout << "\n\t\tThe second polynomial (P2) is entered: ";
+                printPolynomial(p2);
 
-            result = p1.multiply(p2);
-            cout << "\t\t\tMultiplication of polynomials -> P1 * P2 = ";
-            printPolynomial(result);
+                result = p1.add(p2);
+                cout << "\n\t\t\tAddition of polynomials       -> P1 + P2 = ";
+                printPolynomial(result);
 
-            double scalar = inputDouble("\n\t\tEnter a constant value: ");
-            cout << endl;
-            result = p1.scalarMultiply(scalar);
-            cout << "\t\t" << scalar << " * Polynomial(P1) = ";
-            printPolynomial(result);
+                result = p1.subtract(p2);
+                cout << "\t\t\tSubtraction of polynomials    -> P1 - P2 = ";
+                printPolynomial(result);
 
-            result = p2.scalarMultiply(scalar);
-            cout << "\t\tPolynomial(P2) * " << scalar << " = ";
-            printPolynomial(result);
-            cout << endl;
+                result = p1.multiply(p2);
+                cout << "\t\t\tMultiplication of polynomials -> P1 * P2 = ";
+                printPolynomial(result);
+
+                double scalar = inputDouble("\n\t\tEnter a constant value: ");
+                cout << endl;
+                result = p1.scalarMultiply(scalar);
+                cout << "\t\t" << scalar << " * Polynomial(P1) = ";
+                printPolynomial(result);
+
+                result = p2.scalarMultiply(scalar);
+                cout << "\t\tPolynomial(P2) * " << scalar << " = ";
+                printPolynomial(result);
+                cout << endl;
+            } while (true);
             system("pause");
             system("cls");
         }
